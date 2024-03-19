@@ -1,0 +1,7 @@
+{
+    "clientID": "6ZyfZNuDFXXx1Xg8xwvM5BPV5fca",
+    "signInRedirectURL": "http://localhost:3000/home",
+    "signOutRedirectURL": "http://localhost:3000",
+    "serverOrigin": "https://api.asgardeo.io/t/lahiruwso2",
+    "scope": ["email","profile"]
+}
