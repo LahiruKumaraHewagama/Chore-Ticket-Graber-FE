@@ -14,7 +14,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import NotFound from "./pages/not_found";
 import LandingPage from "./pages/landing_page";
 import theme from "./theme";
-import { useAuthContext } from "@asgardeo/auth-react";
 import ErrorPage from "./pages/error";
 
 const FakeLoginPage = () => {
