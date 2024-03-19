@@ -17,7 +17,7 @@ import theme from "./theme";
 import ErrorPage from "./pages/error";
 
 const FakeLoginPage = () => {
-   
+  
   return (
     <div>
       <button
@@ -53,7 +53,6 @@ export default function App() {
   }
 
 
-    
   useEffect(() => {
     setIsAuthLoading(true);
     if (Cookies.get("userinfo")) {
@@ -98,7 +97,31 @@ export default function App() {
               alignItems: "center",
               flexGrow: 1,
             }}
-          >   
+          >
+            <BrowserRouter>
+              <Routes>
+                {/* rooms */}
+                <Route path="/" Component={LandingPage} />
+                <Route path="/rooms" Component={RoomListing} />
+                {/* reservations */}
+                <Route path="/reservations" Component={ReservationListing} />
+                {/* new reservation */}
+                <Route
+                  path="/reservations/new"
+                  Component={ReservationAddingPage}
+                />
+                {/* update reservation */}
+                <Route
+                  path="/reservations/change"
+                  Component={ReservationUpdatingPage}
+                />
+                <Route path="/error" Component={ErrorPage} />
+                {/* Fake login page. This will only be applied for the local deployment*/}
+                <Route path="/auth/login" Component={FakeLoginPage} />
+                {/* Otherwise, show not found page */}
+                <Route path="*" Component={NotFound} />
+              </Routes>
+            </BrowserRouter>
           </div>
         </UserContext.Provider>
       </ThemeProvider>
