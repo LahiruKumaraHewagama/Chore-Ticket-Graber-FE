@@ -1,7 +1,7 @@
 {
-    "clientID": "6ZyfZNuDFXXx1Xg8xwvM5BPV5fca",
-    "signInRedirectURL": "http://localhost:3000/home",
-    "signOutRedirectURL": "http://localhost:3000",
-    "serverOrigin": "https://api.asgardeo.io/t/lahiruwso2",
-    "scope": ["email","profile"]
+    "clientID": "cGyfUDPuExmbfRhOftZ58ZraR6Ua",
+    "baseUrl": "https://api.asgardeo.io/t/lahiruwso2",
+    "signInRedirectURL": "https://6efc0714-c007-45a7-b1c6-3561ea9e3dd1.e1-us-east-azure.choreoapps.dev",
+    "signOutRedirectURL": "https://6efc0714-c007-45a7-b1c6-3561ea9e3dd1.e1-us-east-azure.choreoapps.dev",
+    "scope": ["profile","openid","phone"]
 }

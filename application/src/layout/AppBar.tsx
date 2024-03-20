@@ -48,7 +48,8 @@ function UserMenu() {
     setAnchorElUser(null);
   };
 
-  if (id === "") {
+
+  if (!state.isAuthenticated) {
     return null;
   }
 
