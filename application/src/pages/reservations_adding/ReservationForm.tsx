@@ -21,7 +21,23 @@ interface RoomState {
 const ReservationForm = () => {
   const { reservation, loading, error, reserveRoom } = useReserveRoom();
 
-  const user = useContext(UserContext);
+  // Retrieve the user information from session storage
+  var userInfoString = sessionStorage.getItem("userInfo");
+
+  // Ensure userInfoString is not null before parsing
+  if (userInfoString !== null) {
+      // Convert the JSON string back to an object
+      var userInfo = JSON.parse(userInfoString);
+
+      // Now you can access individual properties of the userInfo object
+      var email = userInfo.email;
+      var id = userInfo.id;
+      var name = userInfo.name;
+      var mobileNumber = userInfo.mobileNumber;
+
+  } else {
+      console.error("User info not found in session storage.");
+  }
 
   const {
     state: { room },
@@ -78,7 +94,7 @@ const ReservationForm = () => {
       roomType: room.name,
       user: {
         email: emailAddress,
-        id: user.id,
+        id: id,
         mobileNumber,
         name: `${firstName} ${lastName}`,
       },

@@ -7,12 +7,28 @@ import { UserContext } from "../../contexts/user";
 import { toast } from "react-toastify";
 
 function ReservationListing() {
-  const user = useContext(UserContext);
+  // Retrieve the user information from session storage
+  var userInfoString = sessionStorage.getItem("userInfo");
+
+  // Ensure userInfoString is not null before parsing
+  if (userInfoString !== null) {
+      // Convert the JSON string back to an object
+      var userInfo = JSON.parse(userInfoString);
+
+      // Now you can access individual properties of the userInfo object
+      var email = userInfo.email;
+      var id = userInfo.id;
+      var name = userInfo.name;
+      var mobileNumber = userInfo.mobileNumber;
+
+  } else {
+      console.error("User info not found in session storage.");
+  }
   const { fetchReservations, reservations, loading, error } =
     useGetReservations();
 
   useEffect(() => {
-    fetchReservations(user?.id);
+    fetchReservations(id);
   }, []);
 
   useEffect(() => {

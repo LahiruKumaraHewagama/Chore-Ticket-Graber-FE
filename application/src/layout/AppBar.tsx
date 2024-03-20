@@ -11,9 +11,33 @@ import { Home } from "@mui/icons-material";
 import { Button, Icon } from "@mui/material";
 import { UserContext } from "../contexts/user";
 import Cookies from "js-cookie";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 function UserMenu() {
-  const user = React.useContext(UserContext);
+
+  const {
+    state,
+    signOut
+} = useAuthContext();
+
+  // Retrieve the user information from session storage
+  var userInfoString = sessionStorage.getItem("userInfo");
+
+  // Ensure userInfoString is not null before parsing
+  if (userInfoString !== null) {
+      // Convert the JSON string back to an object
+      var userInfo = JSON.parse(userInfoString);
+
+      // Now you can access individual properties of the userInfo object
+      var email = userInfo.email;
+      var id = userInfo.id;
+      var name = userInfo.name;
+      var mobileNumber = userInfo.mobileNumber;
+
+  } else {
+      console.error("User info not found in session storage.");
+  }
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -23,14 +47,25 @@ function UserMenu() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  if (user.id === "") {
+
+  if (id === "") {
     return null;
   }
+
+/**
+ * handles the error occurs when the logout consent page is enabled
+ * and the user clicks 'NO' at the logout consent page
+ */
+
+const handleLogout = () => {
+    signOut();
+};
+
+
   return (
     <Box sx={{ flexGrow: 0 }}>
       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-        <Avatar>
-          {user.id.length > 0 ? user.id.substring(0, 1).toUpperCase() : ""}
+        <Avatar>       
         </Avatar>
       </IconButton>
       <Menu
@@ -55,9 +90,10 @@ function UserMenu() {
           </Button>
         </MenuItem>
         <MenuItem
-          onClick={() => {
-            window.location.href = `/auth/logout?session_hint=${Cookies.get('session_hint')}`;
-          }}
+          onClick={ () => {
+            handleLogout();
+        } }
+         
         >
           <Button style={{ textTransform: "none" }}>
             <Typography textAlign="center">Logout</Typography>
@@ -94,7 +130,7 @@ function Header() {
         </Typography>
         <IconButton
           onClick={() => {
-            window.location.pathname = "/rooms";
+            window.location.pathname = "/";
           }}
           style={{ color: "white" }}
         >

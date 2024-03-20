@@ -6,6 +6,9 @@ import {ReservationListing} from "../../components";
 import { useLocation } from "react-router-dom";
 import { LogoutRequestDenied } from "../../components/LogoutRequestDenied";
 import { USER_DENIED_LOGOUT } from "../../constants/errors";
+import RoomListing from "../room_listing";
+import { AppBar } from "@mui/material";
+import Header from "../../layout/AppBar";
 
 interface DerivedState {
     authenticateResponse: BasicUserInfo,
@@ -119,29 +122,26 @@ export const LandingPage: FunctionComponent = (): ReactElement => {
             isLoading={ state.isLoading }
             hasErrors={ hasAuthenticationErrors }
         >
+        
             {
                 state.isAuthenticated
                     ? (
-                        <div className="content">
-                            <ReservationListing
-                                derivedResponse={ derivedAuthenticationState }
-                            />
-                            <button
-                                className="btn primary mt-4"
-                                onClick={ () => {
-                                    handleLogout();
-                                } }
-                            >
-                                Logout
-                            </button>
+                        
+                        <div className="content"  style={{
+                            backgroundImage: `url(${require("../../resources/hotel-room.png")}`,
+                            minHeight: "100vh",                          
+                            display: "flex",
+                            flexDirection: "column",
+                          }}>
+                            
+                            <RoomListing/>                            
                         </div>
                     )
                     : (
                         <div
                         style={{
                           backgroundImage: `url(${require("../../resources/hotel-room.png")}`,
-                          minHeight: "100vh",
-                          backgroundSize: "cover",
+                          minHeight: "100vh",                          
                           display: "flex",
                           flexDirection: "column",
                         }}
