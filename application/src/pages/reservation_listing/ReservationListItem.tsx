@@ -51,6 +51,7 @@ export default function ReservationListItem(props: {
     <Box
       style={{ background: "white" }}
       display="flex"
+      marginLeft={25}
       justifyContent="space-between"
       width="100%"
       border={1}

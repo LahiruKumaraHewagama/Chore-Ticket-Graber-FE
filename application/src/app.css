@@ -138,11 +138,9 @@ code {
 }
 
 .container {
-    background: #fff;
-    border: 1px solid #e2e2e2;
     width: 980px;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 0px;
     border-radius: 10px;
 }
 
@@ -165,12 +163,20 @@ code {
 }
 
 .content {
-    padding: 50px;
+    padding: 100px;
 }
 
 .content .spa-app-description {
     line-height: 1.7;
 }
+
+.headercontent {
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 100px;
+
+}
+
 
 .btn.primary, .btn.primary:active, .btn.primary:focus {
     background-color: #282c34;

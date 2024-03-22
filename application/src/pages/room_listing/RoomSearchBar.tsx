@@ -51,18 +51,19 @@ export function RoomSearchBar(props: RoomSearchProps) {
   };
 
   return (
+    <div style={{alignItems:"center"}}>
     <Box
       flexDirection="row"
       display="flex"
       justifyContent="space-between"
       border={1}
-      px={8}
-      py={4}
+      px={1}
+      py={1}
       mb={4}
-      style={{ background: "rgba(0, 0, 0, 0.5)" }}
+      style={{ background: "rgba(0, 0, 0, 0.5)",width:"1000px" }}
     >
-      <Box display="flex" width="70%" justifyContent="space-between">
-        <Box style={{ backgroundColor: "white" }} width="30%" borderRadius={2}>
+      <Box display="flex" width="100%" justifyContent="space-between">
+        <Box style={{ backgroundColor: "white" }} width="25%" borderRadius={0}>
           <TextField
             onChange={handleCheckInChange}
             fullWidth
@@ -77,7 +78,7 @@ export function RoomSearchBar(props: RoomSearchProps) {
             }}
           />
         </Box>
-        <Box style={{ backgroundColor: "white" }} width="30%" borderRadius={2}>
+        <Box style={{ backgroundColor: "white" }} width="25%" borderRadius={0}>
           <TextField
             onChange={handleCheckOutChange}
             fullWidth
@@ -89,7 +90,7 @@ export function RoomSearchBar(props: RoomSearchProps) {
             inputProps={{ min: formatDate(checkIn) }}
           />
         </Box>
-        <Box style={{ backgroundColor: "white" }} width="30%" borderRadius={2}>
+        <Box style={{ backgroundColor: "white" }} width="25%">
           <TextField
             fullWidth
             label="Guest Capacity"
@@ -105,20 +106,22 @@ export function RoomSearchBar(props: RoomSearchProps) {
           </TextField>
         </Box>
       </Box>
-      <Button
-        style={{ textTransform: "none", width: "20%", borderRadius: "8px" }}
-        variant="contained"
-        onClick={handleRoomSearch}
-        disabled={
-          checkIn === null || checkOut === null || loading
-        }
-      >
-        {loading ? (
-          <Typography>Searching...</Typography>
-        ) : (
-          <Typography>Search</Typography>
-        )}
-      </Button>
+   
     </Box>
+       <Button className="btn primary"
+       style={{ marginLeft:"300px" ,textTransform: "none", width: "200px"}}
+       variant="contained"
+       onClick={handleRoomSearch}
+       disabled={
+         checkIn === null || checkOut === null || loading
+       }
+     >
+       {loading ? (
+         <Typography>Waiting...</Typography>
+       ) : (
+         <Typography>Search</Typography>
+       )}
+     </Button>
+     </div>
   );
 }

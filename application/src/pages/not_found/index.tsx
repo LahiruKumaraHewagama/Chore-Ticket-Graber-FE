@@ -5,7 +5,7 @@ export default function NotFound() {
   const navigate = useNavigate();
   return (
     <Box
-      style={{ background: "rgba(0, 0, 0, 0.5)" }}
+
       width="50%"
       height="50vh"
       display="flex"

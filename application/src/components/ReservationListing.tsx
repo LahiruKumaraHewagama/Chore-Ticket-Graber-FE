@@ -69,8 +69,8 @@ export const ReservationListing: FunctionComponent<ReservationListingPropsInterf
   }, [error]);
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", width: "70%" }}>
-      <Box style={{ background: "rgba(0, 0, 0, 0.5)" }} px={8} py={4}>
+        <div style={{margin:"1000px", width: "100%" ,alignItems:"center"}}>
+      <Box style={{ padding:"100px" }} px={8} py={4}>
         {loading && (
           <div
             style={{
@@ -93,7 +93,7 @@ export const ReservationListing: FunctionComponent<ReservationListingPropsInterf
         {!reservations ||
           (reservations.length === 0 && (
             <Typography variant="h4" color="white" align="center">
-              No reservations found
+              No Result
             </Typography>
           ))}
       </Box>

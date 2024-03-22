@@ -18,24 +18,24 @@ function UserMenu() {
   const {
     state,
     signOut
-} = useAuthContext();
+  } = useAuthContext();
 
   // Retrieve the user information from session storage
   var userInfoString = sessionStorage.getItem("userInfo");
 
   // Ensure userInfoString is not null before parsing
   if (userInfoString !== null) {
-      // Convert the JSON string back to an object
-      var userInfo = JSON.parse(userInfoString);
+    // Convert the JSON string back to an object
+    var userInfo = JSON.parse(userInfoString);
 
-      // Now you can access individual properties of the userInfo object
-      var email = userInfo.email;
-      var id = userInfo.id;
-      var name = userInfo.name;
-      var mobileNumber = userInfo.mobileNumber;
+    // Now you can access individual properties of the userInfo object
+    var email = userInfo.email;
+    var id = userInfo.id;
+    var name = userInfo.name;
+    var mobileNumber = userInfo.mobileNumber;
 
   } else {
-      console.error("User info not found in session storage.");
+    console.error("User info not found in session storage.");
   }
 
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
@@ -53,55 +53,26 @@ function UserMenu() {
     return null;
   }
 
-/**
- * handles the error occurs when the logout consent page is enabled
- * and the user clicks 'NO' at the logout consent page
- */
+  /**
+   * handles the error occurs when the logout consent page is enabled
+   * and the user clicks 'NO' at the logout consent page
+   */
 
-const handleLogout = () => {
+  const handleLogout = () => {
     signOut();
-};
+  };
 
 
   return (
-    <Box sx={{ flexGrow: 0 }}>
-      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-        <Avatar>       
-        </Avatar>
-      </IconButton>
-      <Menu
-        sx={{ mt: "45px" }}
-        id="menu-appbar"
-        anchorEl={anchorElUser}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-      >
-        <MenuItem onClick={() => (window.location.pathname = "/reservations")}>
-          <Button style={{ textTransform: "none" }}>
-            <Typography textAlign="center">My Reservations</Typography>
-          </Button>
-        </MenuItem>
-        <MenuItem
-          onClick={ () => {
-            handleLogout();
-        } }
-         
-        >
-          <Button style={{ textTransform: "none" }}>
-            <Typography textAlign="center">Logout</Typography>
-          </Button>
-        </MenuItem>
-      </Menu>
-    </Box>
+    <button
+      className="btn primary" style={{ margin: "10px" }}
+      onClick={() => {
+        handleLogout();
+      }}
+    >
+      Logout
+    </button>
+
   );
 }
 
@@ -118,25 +89,26 @@ function Header() {
         padding: "8px",
         paddingLeft: "16px",
         paddingRight: "16px",
-        marginBottom: "64px",
+        backgroundColor: "white"
       }}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <AutoAwesomeIcon style={{marginRight: 8}} />
-        <Typography
-          variant="h6"
-          noWrap
-        >
-          Luxury Hotels
-        </Typography>
-        <IconButton
-          onClick={() => {
-            window.location.pathname = "/";
-          }}
-          style={{ color: "white" }}
-        >
-          <Home />
-        </IconButton>
+      <a href="/" ><div className="headercontent" style={{
+        backgroundImage: `url(${require("../resources/logo.jpg")}`, backgroundSize: 'cover',
+      }} /></a>
+
+      <div style={{ display: "flex", alignItems: "center", color: "black", fontWeight: "bold" }}>
+        <a href="/" >
+          <h3 style={{ margin: "20px" }}>Home</h3>
+        </a>
+
+        {sessionStorage.getItem("userInfo") !== null ? (
+          <a href="/reservations">
+            <h3 style={{ margin: "20px" }}>Booking</h3>
+          </a>) : (null)}
+
+        <a href="/">
+          <h3 style={{ margin: "20px" }}>About us</h3>
+        </a>
       </div>
       <UserMenu />
     </AppBar>

@@ -121,42 +121,32 @@ export const LandingPage: FunctionComponent = (): ReactElement => {
         <DefaultLayout
             isLoading={ state.isLoading }
             hasErrors={ hasAuthenticationErrors }
-        >
-        
-            {
-                state.isAuthenticated
+        >   
+            {state.isAuthenticated
                     ? (
-                        
-                        <div className="content"  style={{
-                            backgroundImage: `url(${require("../../resources/hotel-room.png")}`,
-                            minHeight: "100vh",                          
-                            display: "flex",
-                            flexDirection: "column",
-                          }}>
-                            
+                        <div className="content"  
+                          >
                             <RoomListing/>                            
                         </div>
                     )
                     : (
-                        <div
-                        style={{
-                          backgroundImage: `url(${require("../../resources/hotel-room.png")}`,
-                          minHeight: "100vh",                          
-                          display: "flex",
-                          flexDirection: "column",
-                        }}
-                      >
-                         <div>
+                              
+                        <div>
+                        <h1 style={{fontSize:"100px",fontWeight:"bold",color:"black",WebkitTextStroke: "1px white"}}>Bright Royal Hotels</h1>          
+                        <h3 style={{fontSize:"25px"}}>Where Comfort Meets Convenience</h3>          
+                         
                          <button
-                                className="btn primary"
+                                className="btn primary" style={{margin:"10px"}}
                                 onClick={ () => {
                                     handleLogin();
                                 } }
                             >
-                                Get Started
+                                Booking
                             </button>
-                        </div>
-                      </div>
+                            <h4>We have a range of Accessible Double Rooms which help to meet your specific needs without any compromise on 4-star comfort during your stay. All our accessible rooms come complete with a wider entrance, fully and semi-adapted bathrooms and double beds for two adults.</h4>
+                          
+                            </div>
+                   
                     )
             }
         </DefaultLayout>

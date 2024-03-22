@@ -11,14 +11,14 @@ function RoomListing() {
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "70%" }}>
       <RoomSearchBar searchRooms={fetchRooms} error={error} loading={loading} />
-      <Box style={{ background: "rgba(0, 0, 0, 0.5)" }} px={8} py={4}>
+      <Box style={{ background: "rgba(0, 0, 0, 0.5)" , marginLeft:"300px",marginTop:"50px"}} px={1} py={1}>
         {roomList &&
           roomList.map((room: RoomType) => (
             <RoomListItem room={room} key={room.id} />
           ))}
           {!roomList || roomList.length === 0 && (
-            <Typography textAlign="center" variant="h4" color="white">
-              No rooms found
+            <Typography textAlign="center" variant="h5" color="white">
+              No Results
             </Typography>
           )}
       </Box>

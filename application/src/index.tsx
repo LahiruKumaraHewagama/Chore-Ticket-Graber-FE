@@ -19,7 +19,13 @@ const AppContent: FunctionComponent = (): ReactElement => {
 
     return (
         <ErrorBoundary error={error}>
-            <Router>
+            <div  style={{
+                          backgroundImage: `url(${require("./resources/background.jpg")}`,
+                          width: "100%",
+                          minHeight:"500px"
+                        }}>
+
+            <Router >
             <Routes>
                 <Route path="/" element={ <LandingPage /> } />
                 <Route path="/rooms" Component={RoomListing} />
@@ -42,6 +48,7 @@ const AppContent: FunctionComponent = (): ReactElement => {
                 <Route element={ <NotFound /> } />
             </Routes>
         </Router>
+        </div>
         </ErrorBoundary>
     )
 };

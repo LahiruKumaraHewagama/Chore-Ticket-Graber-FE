@@ -18,7 +18,7 @@ export default function RoomListItem(props: { room: RoomType }) {
       mb={1}
     >
       <Box
-        width="13%"
+        width="100%"
         p={2}
         pl={4}
         display="flex"
@@ -42,7 +42,7 @@ export default function RoomListItem(props: { room: RoomType }) {
       </Box>
 
       <Box
-        width="53%"
+        width="100%"
         p={2}
         display="flex"
         flexDirection="column"
@@ -53,7 +53,7 @@ export default function RoomListItem(props: { room: RoomType }) {
       </Box>
 
       <Box
-        width="13%"
+        width="100%"
         p={2}
         display="flex"
         flexDirection="column"
@@ -64,7 +64,7 @@ export default function RoomListItem(props: { room: RoomType }) {
       </Box>
 
       <Box
-        width="13%"
+        width="100%"
         p={2}
         pr={4}
         display="flex"
@@ -72,7 +72,7 @@ export default function RoomListItem(props: { room: RoomType }) {
         justifyContent="flex-end"
         alignItems="center"
       >
-        <Button
+        <Button className="btn primary"
           onClick={() => {
             navigate("/reservations/new", { state: { room } });
           }}

@@ -39,7 +39,7 @@ function ReservationListing() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "70%" }}>
-      <Box style={{ background: "rgba(0, 0, 0, 0.5)" }} px={8} py={4}>
+      <Box  px={8} py={4}>
         {loading && (
           <div
             style={{
