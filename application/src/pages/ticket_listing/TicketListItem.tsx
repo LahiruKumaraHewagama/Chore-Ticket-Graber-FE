@@ -1,11 +1,11 @@
 import React from "react";
-import { RoomType } from "../../types/generated";
+import { TicketType } from "../../types/generated";
 import { Box, Button, Typography } from "@mui/material";
-import LuggageOutlinedIcon from "@mui/icons-material/LuggageOutlined";
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import { useNavigate } from "react-router-dom";
 
-export default function RoomListItem(props: { room: RoomType }) {
-  const { room } = props;
+export default function TicketListItem(props: { ticket: TicketType }) {
+  const { ticket } = props;
   const navigate = useNavigate();
   return (
     <Box
@@ -27,15 +27,15 @@ export default function RoomListItem(props: { room: RoomType }) {
         alignItems="flex=start"
       >
         <Box>
-          <Typography variant="h6" color="grey">{room.name}</Typography>
+          <Typography variant="h6" color="grey">{ticket.name}</Typography>
         </Box>
         <Box display="flex" justifyContent="flex-start" alignItems="center">
           <Box>
-            <LuggageOutlinedIcon />
+            <ConfirmationNumberIcon />
           </Box>
           <Box>
             <Typography fontSize={12}>
-              {room.guestCapacity} Guests
+              {ticket.guestCapacity} 
             </Typography>
           </Box>
         </Box>
@@ -60,7 +60,7 @@ export default function RoomListItem(props: { room: RoomType }) {
         justifyContent="center"
         alignItems="flex-end"
       >
-        <Typography>{room.price}$ /day</Typography>
+        <Typography>{ticket.price}$ Price</Typography>
       </Box>
 
       <Box
@@ -74,12 +74,12 @@ export default function RoomListItem(props: { room: RoomType }) {
       >
         <Button className="btn primary"
           onClick={() => {
-            navigate("/reservations/new", { state: { room } });
+            navigate("/reservations/new", { state: { ticket } });
           }}
           style={{ textTransform: "none" }}
           variant="contained"
         >
-          Reserve
+          Book
         </Button>
       </Box>
     </Box>

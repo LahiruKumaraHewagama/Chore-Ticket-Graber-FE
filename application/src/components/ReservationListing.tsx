@@ -69,8 +69,11 @@ export const ReservationListing: FunctionComponent<ReservationListingPropsInterf
   }, [error]);
 
     return (
-        <div style={{margin:"1000px", width: "100%" ,alignItems:"center"}}>
-      <Box style={{ padding:"100px" }} px={8} py={4}>
+        <div style={{margin:"0px", width: "100%" ,alignItems:"center"}}>
+               
+
+      <Box style={{ paddingLeft:"1px" }} px={0} py={4}>
+    
         {loading && (
           <div
             style={{
@@ -84,11 +87,19 @@ export const ReservationListing: FunctionComponent<ReservationListingPropsInterf
         )}
         {reservations &&
           reservations.map((reservation: Reservation) => (
+            <div  style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <p style={{ fontSize: "50px", fontWeight: "bold", color: "black", marginTop: "15px" }}>My Ticket Bookings</p>
+            <div className="vertical-line"></div>
             <ReservationListItem
               reservation={reservation}
               key={reservation.id}
               fetchReservations={fetchReservations}
             />
+            </div>
           ))}
         {!reservations ||
           (reservations.length === 0 && (

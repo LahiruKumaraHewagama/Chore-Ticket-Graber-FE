@@ -40,7 +40,7 @@ export interface ReservationRequest {
      * @type {string}
      * @memberof ReservationRequest
      */
-    'roomType': string;
+    'ticketType': string;
     /**
      * 
      * @type {User}

@@ -36,7 +36,7 @@ npm start
 4) Add HTTP service component to implement API for the hotel reservation front end. 
    It should provide the following API paths. Please refer to README.md for more on service resources.
 
-   1) Get available room types
+   1) Get available ticket types
    2) Create a reservation
    3) Update the reservation
    4) Get user reservations
@@ -50,7 +50,7 @@ npm start
    checkoutDate: "2024-02-20T10:00:00Z", 
    rate: 100, 
    user: user, 
-   roomType: "Family"
+   ticketType: "Family"
 }
 
 ```
@@ -58,12 +58,12 @@ npm start
 
 ## TIPS: 
    
-1)  Use two tables for Rooms and Reservations.
+1)  Use two tables for Tickets and Reservations.
    
    ```
-   table<Room> key(number) rooms;
+   table<Ticket> key(number) tickets;
 
-   table<Reservation> key(id) roomReservations = table [];
+   table<Reservation> key(id) ticketReservations = table [];
    
    ```
    

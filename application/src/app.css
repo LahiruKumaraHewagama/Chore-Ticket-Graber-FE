@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    text-align: center;
+    text-align: left;
     color: #2A2A2A;
     background-color: #fff;
     font-family: BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif, 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -21,7 +21,7 @@ b {
 }
 
 a {
-    color: #f47421;
+    color: #00cd65;
 }
 
 a:hover {
@@ -73,9 +73,15 @@ code {
     background: #272822;
     padding: 4px;
     font-size: 90%;
-    color: #fd971f;
+    color: #00cd65;
 }
 
+.vertical-line {
+    border-left: 1px solid black; /* Change the color and width as needed */
+    height: 500px; /* Adjust the height as needed */
+    margin-right: -100px;
+  }
+  
 .code {
     background: #272822;
     display: block;
@@ -86,7 +92,7 @@ code {
 }
 
 .code .id-token-0 {
-    color: #cc6633;
+    color: #00cd65;
 }
 
 .code .id-token-1 {
@@ -94,7 +100,7 @@ code {
 }
 
 .code .id-token-2 {
-    color: #fd971f;
+    color: #00cd65;
 }
 
 .row {
@@ -156,8 +162,8 @@ code {
 }
 
 .header-title {
-    background-color: #f47421;
-    color: #ffffff;
+    background-color: #00cd65;
+    color: #00cd65;
     padding: 20px;
     border-radius: 10px 10px 0 0;
 }

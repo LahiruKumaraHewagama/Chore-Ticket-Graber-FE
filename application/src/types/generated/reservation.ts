@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Room } from './room';
+import { Ticket } from './ticket';
 // May contain unused imports in some cases
 // @ts-ignore
 import { User } from './user';
@@ -34,10 +34,10 @@ export interface Reservation {
     'id': number;
     /**
      * 
-     * @type {Room}
+     * @type {Ticket}
      * @memberof Reservation
      */
-    'room': Room;
+    'ticket': Ticket;
     /**
      * 
      * @type {string}

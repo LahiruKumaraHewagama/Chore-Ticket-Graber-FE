@@ -18,7 +18,7 @@ export default function NotFound() {
         Page Not Found
       </Typography>
       <Button
-        onClick={() => navigate("/rooms")}
+        onClick={() => navigate("/tickets")}
         size="large"
         variant="contained"
         color="secondary"

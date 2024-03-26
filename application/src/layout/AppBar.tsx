@@ -60,6 +60,7 @@ function UserMenu() {
 
   const handleLogout = () => {
     signOut();
+    
   };
 
 
@@ -93,22 +94,29 @@ function Header() {
       }}
     >
       <a href="/" ><div className="headercontent" style={{
-        backgroundImage: `url(${require("../resources/logo.jpg")}`, backgroundSize: 'cover',
+        backgroundImage: `url(${require("../resources/logo.png")}`, backgroundSize: 'cover',
       }} /></a>
 
       <div style={{ display: "flex", alignItems: "center", color: "black", fontWeight: "bold" }}>
-        <a href="/" >
-          <h3 style={{ margin: "20px" }}>Home</h3>
-        </a>
+
+
+        {sessionStorage.getItem("userInfo") !== null ? (
+          <a href="/" >
+            <h3 style={{ margin: "20px" }}>Home</h3>
+          </a>
+        ) : (null)}
 
         {sessionStorage.getItem("userInfo") !== null ? (
           <a href="/reservations">
-            <h3 style={{ margin: "20px" }}>Booking</h3>
-          </a>) : (null)}
+            <h3 style={{ margin: "20px" }}>My Tickets</h3>
+          </a>
 
-        <a href="/">
-          <h3 style={{ margin: "20px" }}>About us</h3>
+        ) : (null)}
+
+        <a href="/" >
+          <h3 style={{ margin: "20px" }}>Contact Us</h3>
         </a>
+
       </div>
       <UserMenu />
     </AppBar>

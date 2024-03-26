@@ -7,7 +7,7 @@ import { default as authConfig } from "./config.json";
 import { ErrorBoundary } from "./error-boundary";
 import NotFound from "./pages/not_found";
 import {LandingPage} from "./pages/landing_page";
-import RoomListing from "./pages/room_listing";
+import TicketListing from "./pages/ticket_listing";
 import { ReservationListing } from "./components/ReservationListing";
 import ReservationAddingPage from "./pages/reservations_adding";
 import ReservationUpdatingPage from "./pages/reservations_updating";
@@ -20,7 +20,7 @@ const AppContent: FunctionComponent = (): ReactElement => {
     return (
         <ErrorBoundary error={error}>
             <div  style={{
-                          backgroundImage: `url(${require("./resources/background.jpg")}`,
+                          backgroundImage: `url(${require("./resources/background.png")}`,
                           width: "100%",
                           minHeight:"500px"
                         }}>
@@ -28,7 +28,7 @@ const AppContent: FunctionComponent = (): ReactElement => {
             <Router >
             <Routes>
                 <Route path="/" element={ <LandingPage /> } />
-                <Route path="/rooms" Component={RoomListing} />
+                <Route path="/tickets" Component={TicketListing} />
                 {/* reservations */}
                 <Route path="/reservations" Component={ReservationListing} />
                 {/* new reservation */}

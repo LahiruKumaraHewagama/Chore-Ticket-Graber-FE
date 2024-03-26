@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Reservation } from "../../types/generated";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
-import LuggageOutlinedIcon from "@mui/icons-material/LuggageOutlined";
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import { useDeleteReservation } from "../../hooks/reservations";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -62,23 +62,22 @@ export default function ReservationListItem(props: {
         width="13%"
         p={2}
         pl={4}
-        display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="flex=start"
       >
         <Box>
           <Typography variant="h6" color="grey">
-            {reservation.room.type.name}
+            {reservation.ticket.type.name}
           </Typography>
         </Box>
         <Box display="flex" justifyContent="flex-start" alignItems="center">
           <Box>
-            <LuggageOutlinedIcon />
+            <ConfirmationNumberIcon />
           </Box>
           <Box>
             <Typography fontSize={12}>
-              {reservation.room.type.guestCapacity} Guests
+              {reservation.ticket.type.guestCapacity} Guests
             </Typography>
           </Box>
         </Box>
@@ -92,14 +91,13 @@ export default function ReservationListItem(props: {
         justifyContent="center"
       >
         <Typography style={{ color: "grey" }}>
-          <span style={{ color: "black" }}>Room:</span> {reservation.room.number}{" "}
+          <span style={{ color: "black" }}>Ticket ID:</span> {reservation.ticket.number}{" "}
           <span style={{ color: "grey", marginLeft: "8px", marginRight: "8px" }}>|</span>{" "}
           <span style={{ color: "black" }}>User:</span> {reservation.user?.id}
         </Typography>
         <Typography style={{ color: "grey" }}>
-          <span style={{ color: "black" }}>Check-In:</span> {formatDateString(reservation.checkinDate)}{" "}
-          <span style={{ color: "grey", marginLeft: "8px", marginRight: "8px" }}>|</span>{" "}
-          <span style={{ color: "black" }}>Check-Out:</span> {formatDateString(reservation.checkoutDate)}
+          <span style={{ color: "black" }}>Date:</span> {formatDateString(reservation.checkinDate)}{" "}
+          <span style={{ color: "grey", marginLeft: "8px", marginRight: "8px" }}></span>{" "}
         </Typography>
       </Box>
 
@@ -111,7 +109,7 @@ export default function ReservationListItem(props: {
         justifyContent="center"
         alignItems="flex-end"
       >
-        <Typography>{reservation.room.type.price}$ /day</Typography>
+        <Typography>{reservation.ticket.type.price}$</Typography>
       </Box>
 
       <Box

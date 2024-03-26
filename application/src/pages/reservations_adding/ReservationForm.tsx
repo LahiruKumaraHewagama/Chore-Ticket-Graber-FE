@@ -6,20 +6,20 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
-import { useReserveRoom } from "../../hooks/reservations";
+import { useReserveTicket } from "../../hooks/reservations";
 import { useLocation, useNavigate } from "react-router-dom";
-import { RoomType } from "../../types/generated";
+import { TicketType } from "../../types/generated";
 import { Location } from "history";
 import { UserContext } from "../../contexts/user";
 import { toast } from "react-toastify";
 import { formatDate } from "../../utils/utils";
 
-interface RoomState {
-  room: RoomType;
+interface TicketState {
+  ticket: TicketType;
 }
 
 const ReservationForm = () => {
-  const { reservation, loading, error, reserveRoom } = useReserveRoom();
+  const { reservation, loading, error, reserveTicket } = useReserveTicket();
 
   // Retrieve the user information from session storage
   var userInfoString = sessionStorage.getItem("userInfo");
@@ -40,8 +40,8 @@ const ReservationForm = () => {
   }
 
   const {
-    state: { room },
-  } = useLocation() as Location<RoomState>;
+    state: { ticket },
+  } = useLocation() as Location<TicketState>;
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -87,11 +87,11 @@ const ReservationForm = () => {
     } = formData;
     console.log("formData", formData);
 
-    await reserveRoom({
+    await reserveTicket({
       checkinDate: checkIn.toISOString(),
       checkoutDate: checkOut.toISOString(),
       rate: 100,
-      roomType: room.name,
+      ticketType: ticket.name,
       user: {
         email: emailAddress,
         id: id,
@@ -103,7 +103,7 @@ const ReservationForm = () => {
     if (error) {
       return;
     }
-    toast.success("Reservation placed!");
+    toast.success("Your ticket is ordered!");
     navigate("/reservations", { state: { reservation } });
   };
 
@@ -116,10 +116,10 @@ const ReservationForm = () => {
       px={8}
     >
       <Typography variant="h4" gutterBottom>
-        Reserve a room
+        Book Ticket
       </Typography>
       <Typography variant="body1" gutterBottom>
-        Enter your details and click "Reserve". You can pay at the check-in.
+      Book Your Experience, Secure Your Seat!
       </Typography>
       <Box
         mt={3}
@@ -171,7 +171,7 @@ const ReservationForm = () => {
           <TextField
             onChange={handleCheckInChange}
             fullWidth
-            label="Check In Date"
+            label="Date"
             variant="outlined"
             type="date"
             InputLabelProps={{ shrink: true }}
@@ -182,11 +182,11 @@ const ReservationForm = () => {
             }}
           />
         </Box>
-        <Box width="48%">
+        <Box width="48%" style={{display:"none"}}>
           <TextField
             onChange={handleCheckOutChange}
             fullWidth
-            label="Check Out Date"
+            label="Date"
             variant="outlined"
             type="date"
             InputLabelProps={{ shrink: true }}
@@ -200,7 +200,7 @@ const ReservationForm = () => {
       <Box display="flex" justifyContent="flex-end">
         <Button
           style={{ textTransform: "none" }}
-          onClick={() => navigate("/rooms")}
+          onClick={() => navigate("/tickets")}
           color="secondary"
           variant="outlined"
         >
@@ -213,7 +213,7 @@ const ReservationForm = () => {
           onClick={handleReserve}
           disabled={loading}
         >
-          {loading ? <CircularProgress size={24} color="primary" /> : "Reserve"}
+          {loading ? <CircularProgress size={24} color="primary" /> : "Buy"}
         </Button>
       </Box>
     </Box>

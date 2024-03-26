@@ -13,27 +13,36 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { RoomType } from './room-type';
 
 /**
  * 
  * @export
- * @interface Room
+ * @interface TicketType
  */
-export interface Room {
+export interface TicketType {
     /**
      * 
      * @type {number}
-     * @memberof Room
+     * @memberof TicketType
      */
-    'number': number;
+    'id': number;
     /**
      * 
-     * @type {RoomType}
-     * @memberof Room
+     * @type {string}
+     * @memberof TicketType
      */
-    'type': RoomType;
+    'name': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TicketType
+     */
+    'guestCapacity': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof TicketType
+     */
+    'price': number;
 }
 

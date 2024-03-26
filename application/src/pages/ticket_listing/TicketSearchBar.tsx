@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { formatDate } from "../../utils/utils";
 
-interface RoomSearchProps {
-  searchRooms: (checkIn: string, checkOut: string, guestCapacity: number) => void;
+interface TicketSearchProps {
+  searchTickets: (checkIn: string, checkOut: string, guestCapacity: number) => void;
   loading: boolean;
   error?: Error;
 }
 
-export function RoomSearchBar(props: RoomSearchProps) {
-  const { searchRooms, loading, error } = props;
+export function TicketSearchBar(props: TicketSearchProps) {
+  const { searchTickets, loading, error } = props;
   const [guestCapacity, setGuestCapacity] = React.useState(2);
   const [checkIn, setCheckIn] = React.useState<Date>(new Date());
   const [checkOut, setCheckOut] = React.useState<Date>(new Date());
@@ -24,7 +24,7 @@ export function RoomSearchBar(props: RoomSearchProps) {
     }
   }, [error]);
 
-  const handleRoomTypeChange = (event: any) => {
+  const handleTicketTypeChange = (event: any) => {
     setGuestCapacity(event.target.value as number);
   };
 
@@ -42,32 +42,30 @@ export function RoomSearchBar(props: RoomSearchProps) {
     setMaxCheckInDate(formatDate(checkOutDate));
   };
 
-  const handleRoomSearch = () => {
+  const handleTicketSearch = () => {
     console.log(checkIn, checkOut, guestCapacity);
     if (checkIn === null || checkOut === null) {
       return;
     }
-    searchRooms(checkIn.toISOString(), checkOut.toISOString(), guestCapacity);
+    searchTickets(checkIn.toISOString(), checkOut.toISOString(), guestCapacity);
   };
 
   return (
     <div style={{alignItems:"center"}}>
     <Box
       flexDirection="row"
-      display="flex"
-      justifyContent="space-between"
       border={1}
       px={1}
       py={1}
-      mb={4}
-      style={{ background: "rgba(0, 0, 0, 0.5)",width:"1000px" }}
+      mb={2}
+      style={{ background: "rgba(0, 0, 0, 0.5)",width:"500px" }}
     >
       <Box display="flex" width="100%" justifyContent="space-between">
-        <Box style={{ backgroundColor: "white" }} width="25%" borderRadius={0}>
+        <Box style={{ backgroundColor: "white" }} width="45%" borderRadius={0}>
           <TextField
             onChange={handleCheckInChange}
             fullWidth
-            label="Check In Date"
+            label="Date"
             variant="filled"
             type="date"
             InputLabelProps={{ shrink: true }}
@@ -78,8 +76,9 @@ export function RoomSearchBar(props: RoomSearchProps) {
             }}
           />
         </Box>
-        <Box style={{ backgroundColor: "white" }} width="25%" borderRadius={0}>
+        <Box style={{ backgroundColor: "white" , display:"none"}} width="0%" borderRadius={0}>
           <TextField
+          
             onChange={handleCheckOutChange}
             fullWidth
             label="Check Out Date"
@@ -90,28 +89,28 @@ export function RoomSearchBar(props: RoomSearchProps) {
             inputProps={{ min: formatDate(checkIn) }}
           />
         </Box>
-        <Box style={{ backgroundColor: "white" }} width="25%">
+        <Box style={{ backgroundColor: "white" }} width="45%">
           <TextField
             fullWidth
-            label="Guest Capacity"
+            label="Type"
             value={guestCapacity}
             select={true}
-            onChange={handleRoomTypeChange}
+            onChange={handleTicketTypeChange}
             variant="filled"
           >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={1}>Musix</MenuItem>
+            <MenuItem value={2}>Sport</MenuItem>
+            <MenuItem value={3}>Movie</MenuItem>
+            <MenuItem value={4}>Drama</MenuItem>
           </TextField>
         </Box>
       </Box>
    
     </Box>
        <Button className="btn primary"
-       style={{ marginLeft:"300px" ,textTransform: "none", width: "200px"}}
+       style={{ marginLeft:"0px" ,textTransform: "none", width: "200px"}}
        variant="contained"
-       onClick={handleRoomSearch}
+       onClick={handleTicketSearch}
        disabled={
          checkIn === null || checkOut === null || loading
        }

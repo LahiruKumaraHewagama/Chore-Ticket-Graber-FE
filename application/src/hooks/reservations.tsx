@@ -8,12 +8,12 @@ import {
 import { performRequestWithRetry } from "../api/retry";
 import { apiUrl } from "../api/config";
 
-export function useReserveRoom() {
+export function useReserveTicket() {
   const [reservation, setReservation] = useState<Reservation>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error>();
 
-  const reserveRoom = async (request: ReservationRequest): Promise<void> => {
+  const reserveTicket = async (request: ReservationRequest): Promise<void> => {
     setLoading(true);
     const options = {
       method: "POST",
@@ -31,7 +31,7 @@ export function useReserveRoom() {
     setLoading(false);
   };
 
-  return { reservation, loading, error, reserveRoom };
+  return { reservation, loading, error, reserveTicket };
 }
 
 export function useGetReservations() {
